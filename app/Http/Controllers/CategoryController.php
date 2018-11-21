@@ -83,4 +83,13 @@ class CategoryController extends Controller
         return Redirect::to('all-category');
 
     }
+
+    public function delete_category($category_id)
+    {
+        DB::table('tbl_category')
+            ->where('category_id',$category_id)
+            ->delete();
+        Session::put('message','Category Delete successfully!');
+        return Redirect::to('all-category');
+    }
 }
